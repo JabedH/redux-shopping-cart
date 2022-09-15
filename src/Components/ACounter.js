@@ -1,12 +1,17 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../Redux/asusCounter/action";
+import {
+  canonDecrement,
+  canonIncrement,
+} from "../Redux/canonCounter/canonAction";
 import { dellDecrement, dellIncrement } from "../Redux/dellCounter/dellAction";
 
 const ACounter = () => {
   const count = useSelector((state) => state.counter.value);
   const dellCount = useSelector((state) => state.dellCounter.value);
-  const totalCounter = count + dellCount;
+  const canonCount = useSelector((state) => state.canonCounter.value);
+  const totalCounter = count + dellCount + canonCount;
   const dispatch = useDispatch();
   const asusIncrement = () => {
     dispatch(increment());
@@ -19,6 +24,12 @@ const ACounter = () => {
   };
   const dellDecrementHandler = () => {
     dispatch(dellDecrement());
+  };
+  const canonIncrementHandler = () => {
+    dispatch(canonIncrement());
+  };
+  const canonDecrementHandler = () => {
+    dispatch(canonDecrement());
   };
   return (
     <div>
@@ -118,7 +129,7 @@ const ACounter = () => {
                 <div class="text-lg py-2">
                   <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
                     <button
-                      onClick={() => asusIncrement(5)}
+                      onClick={() => asusDecrement()}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                     >
                       <svg
@@ -138,7 +149,7 @@ const ACounter = () => {
                     </button>
                     <p>{count}</p>
                     <button
-                      onClick={() => asusDecrement(5)}
+                      onClick={() => asusIncrement()}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                     >
                       <svg
@@ -167,7 +178,7 @@ const ACounter = () => {
                 <div class="text-lg py-2">
                   <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
                     <button
-                      onClick={() => dellIncrementHandler(5)}
+                      onClick={() => dellDecrementHandler()}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                     >
                       <svg
@@ -187,7 +198,7 @@ const ACounter = () => {
                     </button>
                     <p>{dellCount}</p>
                     <button
-                      onClick={() => dellIncrementHandler(5)}
+                      onClick={() => dellIncrementHandler()}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                     >
                       <svg
@@ -215,7 +226,10 @@ const ACounter = () => {
                 </div>
                 <div class="text-lg py-2">
                   <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
-                    <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center">
+                    <button
+                      onClick={() => canonDecrementHandler()}
+                      class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"
@@ -231,8 +245,11 @@ const ACounter = () => {
                         />
                       </svg>
                     </button>
-                    <p>0</p>
-                    <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center">
+                    <p>{canonCount}</p>
+                    <button
+                      onClick={() => canonIncrementHandler()}
+                      class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"
