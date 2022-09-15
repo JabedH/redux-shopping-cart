@@ -1,13 +1,25 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment } from "../Redux/asusCounter/action";
+import { decrement, increment } from "../Redux/asusCounter/action";
+import { dellDecrement, dellIncrement } from "../Redux/dellCounter/dellAction";
 
 const ACounter = () => {
   const count = useSelector((state) => state.counter.value);
-  // const dispatch = useDispatch();
-  // const incrementHandler = (value) => {
-  //   dispatch(increment(value));
-  // };
+  const dellCount = useSelector((state) => state.dellCounter.value);
+  const totalCounter = count + dellCount;
+  const dispatch = useDispatch();
+  const asusIncrement = () => {
+    dispatch(increment());
+  };
+  const asusDecrement = () => {
+    dispatch(decrement());
+  };
+  const dellIncrementHandler = () => {
+    dispatch(dellIncrement());
+  };
+  const dellDecrementHandler = () => {
+    dispatch(dellDecrement());
+  };
   return (
     <div>
       <div class="bg-gray-50 h-full md:h-screen">
@@ -105,8 +117,10 @@ const ACounter = () => {
                 </div>
                 <div class="text-lg py-2">
                   <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
-                    <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center">
-                      {/* onClick={() => incrementHandler(5)} */}
+                    <button
+                      onClick={() => asusIncrement(5)}
+                      class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"
@@ -123,7 +137,10 @@ const ACounter = () => {
                       </svg>
                     </button>
                     <p>{count}</p>
-                    <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center">
+                    <button
+                      onClick={() => asusDecrement(5)}
+                      class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"
@@ -149,7 +166,10 @@ const ACounter = () => {
                 </div>
                 <div class="text-lg py-2">
                   <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
-                    <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center">
+                    <button
+                      onClick={() => dellIncrementHandler(5)}
+                      class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"
@@ -165,8 +185,11 @@ const ACounter = () => {
                         />
                       </svg>
                     </button>
-                    <p>0</p>
-                    <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center">
+                    <p>{dellCount}</p>
+                    <button
+                      onClick={() => dellIncrementHandler(5)}
+                      class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-4 w-4"
@@ -232,7 +255,7 @@ const ACounter = () => {
               <div class="flex justify-center items-center text-center">
                 <div class="text-xl font-semibold">
                   <p>Total Item</p>
-                  <p class="text-5xl">0</p>
+                  <p class="text-5xl">{totalCounter}</p>
                 </div>
               </div>
             </div>
