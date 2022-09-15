@@ -13,10 +13,10 @@ const ACounter = () => {
   const canonCount = useSelector((state) => state.canonCounter.value);
   const totalCounter = count + dellCount + canonCount;
   const dispatch = useDispatch();
-  const asusIncrement = () => {
+  const asusIncrementHandler = () => {
     dispatch(increment());
   };
-  const asusDecrement = () => {
+  const asusDecrementHandler = () => {
     dispatch(decrement());
   };
   const dellIncrementHandler = () => {
@@ -48,7 +48,10 @@ const ACounter = () => {
                   <p class="text-gray-400 text-base">Tk 35,500</p>
                 </div>
                 <div class="text-lg font-semibold">
-                  <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center">
+                  <button
+                    onClick={() => asusIncrementHandler()}
+                    class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-6 w-6"
@@ -74,7 +77,10 @@ const ACounter = () => {
                   <p class="text-gray-400 text-base">Tk 9,300</p>
                 </div>
                 <div class="text-lg font-semibold">
-                  <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center">
+                  <button
+                    onClick={() => dellIncrementHandler()}
+                    class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-6 w-6"
@@ -100,7 +106,10 @@ const ACounter = () => {
                   <p class="text-gray-400 text-base">Tk 36,500</p>
                 </div>
                 <div class="text-lg font-semibold">
-                  <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center">
+                  <button
+                    onClick={() => canonIncrementHandler()}
+                    class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-6 w-6"
@@ -129,7 +138,7 @@ const ACounter = () => {
                 <div class="text-lg py-2">
                   <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
                     <button
-                      onClick={() => asusDecrement()}
+                      onClick={() => asusDecrementHandler()}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                     >
                       <svg
@@ -149,7 +158,7 @@ const ACounter = () => {
                     </button>
                     <p>{count}</p>
                     <button
-                      onClick={() => asusIncrement()}
+                      onClick={() => asusIncrementHandler()}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                     >
                       <svg
