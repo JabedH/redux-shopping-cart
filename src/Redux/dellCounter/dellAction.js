@@ -1,15 +1,14 @@
 import { DDECREMENT, DINCREMENT } from "./dellActionType";
 
-
-export const dellIncrement = () => {
+export const dellIncrement = (value) => {
   return {
     type: DINCREMENT,
-    // payload: value,
+    payload: value,
   };
 };
-export const dellDecrement = () => {
+export const dellDecrement = (value) => {
   return {
     type: DDECREMENT,
-    // payload: value,
+    payload: value,
   };
 };
