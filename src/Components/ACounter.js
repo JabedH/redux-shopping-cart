@@ -11,12 +11,7 @@ import CanonCounter from "./CanonCounter";
 import DellCounter from "./DellCounter";
 
 const ACounter = () => {
-  const asusCount = useSelector((state) => state.counter.value);
   const asusCount1 = useSelector((state) => state.counter.value1);
-
-  const dellCount = useSelector((state) => state.dellCounter.value);
-  const canonCount = useSelector((state) => state.canonCounter.value);
-  
   const dellCount1 = useSelector((state) => state.dellCounter.value1);
   const canonCount1 = useSelector((state) => state.canonCounter.value1);
 
@@ -102,9 +97,7 @@ const ACounter = () => {
                       </button>
                       <p>{asusCount1}</p>
                       <button
-                        onClick={
-                          asusCount > 0 ? () => asusIncrementHandler() : ""
-                        }
+                        onClick={() => asusIncrementHandler()}
                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                       >
                         <svg
@@ -155,7 +148,7 @@ const ACounter = () => {
                       </button>
                       <p>{dellCount1}</p>
                       <button
-                        onClick={dellCount >0 ?() => dellIncrementHandler():''}
+                        onClick={() => dellIncrementHandler()}
                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                       >
                         <svg
@@ -206,9 +199,7 @@ const ACounter = () => {
                       </button>
                       <p>{canonCount1}</p>
                       <button
-                        onClick={
-                          canonCount > 0 ? () => canonIncrementHandler() : ""
-                        }
+                        onClick={() => canonIncrementHandler()}
                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                       >
                         <svg

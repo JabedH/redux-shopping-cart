@@ -1,7 +1,7 @@
 import { DDECREMENT, DINCREMENT } from "./dellActionType";
 
 const initialState = {
-  value: 35,
+  value: 30,
   value1: 0,
 };
 const dellCounterReducer = (state = initialState, action) => {

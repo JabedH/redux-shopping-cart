@@ -1,7 +1,7 @@
 import { CDECREMENT, CINCREMENT } from "./canonAtionType";
 
 const initialState = {
-  value: 72,
+  value: 40,
   value1: 0,
 };
 const canonCounterReducer = (state = initialState, action) => {

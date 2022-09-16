@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-300">
         <div className="flex-1">
           <a className="btn btn-ghost normal-case text-xl">Online Shopping</a>
         </div>
@@ -49,10 +49,13 @@ const Navbar = () => {
             >
               <div className="card-body">
                 <span className="font-bold text-lg">{totalCounter} Items</span>
-                <span className="text-info">Subtotal: TK {totalPrice}</span>
-                <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
-                    View cart
+                <span className="text-info">TOTAL COST: TK {totalPrice}</span>
+                <div
+                  className="card-actions grid
+                "
+                >
+                  <button className="btn rounded-none bg-purple-600 border-0">
+                    CHECKOUT
                   </button>
                 </div>
               </div>
