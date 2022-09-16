@@ -44,26 +44,34 @@ const ACounter = () => {
     dispatch(canonDecrement());
   };
   return (
-    <div>
-      <div class="bg-gray-50 h-full md:h-screen">
-        <div class="grid place-items-center">
-          <h1 class="text-gray-900 font-bold text-3xl p-10 underline decoration-purple-500 decoration-4 underline-offset-8 mb-4">
-            Shopping Cart
-          </h1>
-        </div>
-        <div class="grid grid-cols-12 gap-6">
-          <div class="col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-8 xxl:col-span-8">
+    <div className="">
+      <div class=" h-full md:h-screen px-11">
+        <div class="grid grid-cols-12 gap-6 ">
+          <div class="  pt-20 col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-8 xxl:col-span-8">
+            <div className="flex justify-between">
+              <h3 className="text-gray-900 font-bold text-2xl text-start ">
+                Shopping Cart
+              </h3>
+              <h3 className="text-gray-900 font-bold text-2xl text-end ">
+                3 Items
+              </h3>
+            </div>
+            <div className="flex flex-col w-full ">
+              <div className="divider"></div>
+            </div>
             {/* All counter */}
             <AsusCounter asusIncrementHandler={asusIncrementHandler} />
             <DellCounter dellIncrementHandler={dellIncrementHandler} />
             <CanonCounter canonIncrementHandler={canonIncrementHandler} />
           </div>
-          <div class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
-            <div class="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4">
+          <div class="p-5 h-full bg-slate-100 col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
+            <h3 className=" text-start text-xl font-bold">Order Summary</h3>
+            <div className="divider"></div>
+            <div class="    rounded-lg my-4 mx-4">
               {asusCount1 > 0 && (
                 <div class="flex justify-between border-b-2 mb-2">
                   <div class="text-lg py-2">
-                    <p>Asus Vivobook X515MA</p>
+                    <p>Apple MacBook Air 13.3-Inch</p>
                   </div>
                   <div class="text-lg py-2">
                     <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
@@ -212,19 +220,45 @@ const ACounter = () => {
                   </div>
                 </div>
               )}
-              <div class="flex justify-center items-center text-center">
-                <div class="text-xl font-semibold">
-                  <p>Total Item</p>
-                  <p class="text-5xl">{totalCounter}</p>
+              <div class=" items-center text-center">
+                <div class=" pt-5 font-bold flex justify-between py-5">
+                  <div className="flex justify-between ">
+                    <p>ITEMS </p>
+                    <p class="ml-3">{totalCounter}</p>
+                  </div>
+                  <p class=""> TK {totalPrice}</p>
                 </div>
               </div>
-            </div>
-            <div class="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4">
-              <div class="flex justify-center items-center text-center">
-                <div class="text-xl font-semibold">
-                  <p>Total Price</p>
-                  <p class="text-5xl"> TK {totalPrice}</p>
+              <div className="pt-5 grid gap-5">
+                <h3 className="text-start font-bold pb-2">SHIPPING</h3>
+                <div className=" bg-white  p-2 ">
+                  <h3 className="">Standard Shipping</h3>
                 </div>
+              </div>
+              <div className="grid gap-5">
+                <h3 className="text-start font-bold mt-3">PROMO CODE</h3>
+                <input
+                  type="text"
+                  placeholder="Enter Your Code "
+                  className="p-2"
+                />
+                <input
+                  type="submit"
+                  value="Apply"
+                  className="btn w-20 rounded-none bg-[#FA7474] border-0"
+                />
+              </div>
+              <div className="grid gap-5">
+                <div className="divider"></div>
+                <div className="flex justify-between font-bold">
+                  <h3>TOTAL COST</h3>
+                  <h3>TK {totalPrice}</h3>
+                </div>
+                <input
+                  type="submit"
+                  value="CHECKOUT"
+                  className="btn rounded-none bg-purple-600 border-0"
+                />
               </div>
             </div>
           </div>
