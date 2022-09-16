@@ -45,7 +45,7 @@ const ACounter = () => {
   };
   return (
     <div className="">
-      <div class=" h-full md:h-screen px-11">
+      <div class=" h-full md:h-screen lg:px-11 px-5">
         <div class="grid grid-cols-12 gap-6 ">
           <div class="  pt-20 col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-8 xxl:col-span-8">
             <div className="flex justify-between">
@@ -60,6 +60,9 @@ const ACounter = () => {
               <div className="divider"></div>
             </div>
             {/* All counter */}
+
+            <h3 className="text-xl">Products Details</h3>
+
             <AsusCounter asusIncrementHandler={asusIncrementHandler} />
             <DellCounter dellIncrementHandler={dellIncrementHandler} />
             <CanonCounter canonIncrementHandler={canonIncrementHandler} />
@@ -71,7 +74,7 @@ const ACounter = () => {
               {asusCount1 > 0 && (
                 <div class="flex justify-between border-b-2 mb-2">
                   <div class="text-lg py-2">
-                    <p>Apple MacBook Air 13.3-Inch</p>
+                    <p>Asus Vivobook X515MA</p>
                   </div>
                   <div class="text-lg py-2">
                     <div class="flex flex-row space-x-2 w-full items-center rounded-lg">

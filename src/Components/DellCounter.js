@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import img from "../img/2.jpg";
 
 const DellCounter = ({ dellIncrementHandler }) => {
   const dellCount = useSelector((state) => state.dellCounter.value);
   return (
     <div>
-      <div class="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4">
-        <div class="flex justify-between px-4 items-center">
-          <div class="text-lg font-semibold">
+      <div class="bg-white py-4 lg:px-4  border-b-2  my-4 mx-4">
+        <div class="flex justify-between lg:px-4 items-center gap-4">
+          <div class="text-lg font-semibold flex  items-center gap-4">
+            <img src={img} className="lg:w-20 w-14" alt="" />
             <p>Dell E1916HV 18.5 Inch ({dellCount})</p>
             <p class="text-gray-400 text-base">Tk 9,300</p>
           </div>
