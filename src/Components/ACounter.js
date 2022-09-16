@@ -8,16 +8,23 @@ import {
 import { dellDecrement, dellIncrement } from "../Redux/dellCounter/dellAction";
 
 const ACounter = () => {
-  const count = useSelector((state) => state.counter.value);
+  const asusCount = useSelector((state) => state.counter.value);
+  const asusCount1 = useSelector((state) => state.counter.value1);
+
   const dellCount = useSelector((state) => state.dellCounter.value);
+  const dellCount1 = useSelector((state) => state.dellCounter.value1);
+
   const canonCount = useSelector((state) => state.canonCounter.value);
-  const totalCounter = count + dellCount + canonCount;
+  const canonCount1 = useSelector((state) => state.canonCounter.value1);
+  const totalCounter = asusCount + dellCount + canonCount;
+  const asusPrice = 35500 * asusCount1;
+  const totalPrice = asusPrice;
   const dispatch = useDispatch();
-  const asusIncrementHandler = () => {
-    dispatch(increment());
+  const asusIncrementHandler = (value) => {
+    dispatch(increment(value));
   };
-  const asusDecrementHandler = () => {
-    dispatch(decrement());
+  const asusDecrementHandler = (value) => {
+    dispatch(decrement(value));
   };
   const dellIncrementHandler = () => {
     dispatch(dellIncrement());
@@ -44,12 +51,12 @@ const ACounter = () => {
             <div class="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4">
               <div class="flex justify-between px-4 items-center">
                 <div class="text-lg font-semibold">
-                  <p>Asus Vivobook X515MA (20)</p>
+                  <p>Asus Vivobook X515MA ({asusCount})</p>
                   <p class="text-gray-400 text-base">Tk 35,500</p>
                 </div>
                 <div class="text-lg font-semibold">
                   <button
-                    onClick={() => asusIncrementHandler()}
+                    onClick={() => asusIncrementHandler(1)}
                     class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center"
                   >
                     <svg
@@ -138,7 +145,7 @@ const ACounter = () => {
                 <div class="text-lg py-2">
                   <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
                     <button
-                      onClick={() => asusDecrementHandler()}
+                      onClick={() => asusDecrementHandler(1)}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                     >
                       <svg
@@ -156,9 +163,9 @@ const ACounter = () => {
                         />
                       </svg>
                     </button>
-                    <p>{count}</p>
+                    <p>{asusCount1}</p>
                     <button
-                      onClick={() => asusIncrementHandler()}
+                      onClick={() => asusIncrementHandler(1)}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                     >
                       <svg
@@ -205,7 +212,7 @@ const ACounter = () => {
                         />
                       </svg>
                     </button>
-                    <p>{dellCount}</p>
+                    <p>{dellCount1}</p>
                     <button
                       onClick={() => dellIncrementHandler()}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
@@ -254,7 +261,7 @@ const ACounter = () => {
                         />
                       </svg>
                     </button>
-                    <p>{canonCount}</p>
+                    <p>{canonCount1}</p>
                     <button
                       onClick={() => canonIncrementHandler()}
                       class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
@@ -289,7 +296,7 @@ const ACounter = () => {
               <div class="flex justify-center items-center text-center">
                 <div class="text-xl font-semibold">
                   <p>Total Price</p>
-                  <p class="text-5xl">0</p>
+                  <p class="text-5xl">{totalPrice}</p>
                 </div>
               </div>
             </div>
