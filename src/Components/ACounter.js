@@ -11,10 +11,13 @@ import CanonCounter from "./CanonCounter";
 import DellCounter from "./DellCounter";
 
 const ACounter = () => {
+  const asusCount = useSelector((state) => state.counter.value);
   const asusCount1 = useSelector((state) => state.counter.value1);
-  const dellCount1 = useSelector((state) => state.dellCounter.value1);
-  console.log(dellCount1);
 
+  const dellCount = useSelector((state) => state.dellCounter.value);
+  const canonCount = useSelector((state) => state.canonCounter.value);
+  
+  const dellCount1 = useSelector((state) => state.dellCounter.value1);
   const canonCount1 = useSelector((state) => state.canonCounter.value1);
 
   const totalCounter = asusCount1 + dellCount1 + canonCount1;
@@ -67,7 +70,7 @@ const ACounter = () => {
             <DellCounter dellIncrementHandler={dellIncrementHandler} />
             <CanonCounter canonIncrementHandler={canonIncrementHandler} />
           </div>
-          <div class="p-5 h-full bg-slate-100 col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
+          <div class="p-5 h-full bg-[#F6F6F6] col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-4 xxl:col-span-4">
             <h3 className=" text-start text-xl font-bold">Order Summary</h3>
             <div className="divider"></div>
             <div class="    rounded-lg my-4 mx-4">
@@ -79,7 +82,7 @@ const ACounter = () => {
                   <div class="text-lg py-2">
                     <div class="flex flex-row space-x-2 w-full items-center rounded-lg">
                       <button
-                        onClick={() => asusDecrementHandler(1)}
+                        onClick={() => asusDecrementHandler()}
                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                       >
                         <svg
@@ -99,7 +102,9 @@ const ACounter = () => {
                       </button>
                       <p>{asusCount1}</p>
                       <button
-                        onClick={() => asusIncrementHandler(1)}
+                        onClick={
+                          asusCount > 0 ? () => asusIncrementHandler() : ""
+                        }
                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                       >
                         <svg
@@ -150,7 +155,7 @@ const ACounter = () => {
                       </button>
                       <p>{dellCount1}</p>
                       <button
-                        onClick={() => dellIncrementHandler()}
+                        onClick={dellCount >0 ?() => dellIncrementHandler():''}
                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                       >
                         <svg
@@ -201,7 +206,9 @@ const ACounter = () => {
                       </button>
                       <p>{canonCount1}</p>
                       <button
-                        onClick={() => canonIncrementHandler()}
+                        onClick={
+                          canonCount > 0 ? () => canonIncrementHandler() : ""
+                        }
                         class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-1 rounded-full inline-flex items-center"
                       >
                         <svg
